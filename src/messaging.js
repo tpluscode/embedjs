@@ -48,7 +48,7 @@ function findIframeByContentWindow(iframes, contentWindow) {
     return foundIframe;
 }
 
-function findIframe(options) {
+iframely.findIframe = function (options) {
 
     var foundIframe, iframes;
 
@@ -71,7 +71,7 @@ function findIframe(options) {
 receiveMessage(function(e, message) {
     if (message && (message.method || message.type)) {
 
-        var foundIframe = findIframe({
+        var foundIframe = iframely.findIframe({
             contentWindow: e.source,
             src: message.context,
             domains: message.domains !== 'all' && iframely.DOMAINS.concat(iframely.CDN)
